@@ -12,6 +12,16 @@
 		1EEBC4D3229573A700234D9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EEBC4D1229573A700234D9C /* Main.storyboard */; };
 		1EEBC4D5229573A800234D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EEBC4D4229573A800234D9C /* Assets.xcassets */; };
 		1EEBC4D8229573A800234D9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EEBC4D6229573A800234D9C /* LaunchScreen.storyboard */; };
+		1EEBC4E2229577D200234D9C /* EmployeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEBC4E1229577D200234D9C /* EmployeesViewController.swift */; };
+		1EEBC4E42295785A00234D9C /* EmployeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEBC4E32295785A00234D9C /* EmployeeTableViewCell.swift */; };
+		1EEBC4E722957F6700234D9C /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEBC4E622957F6700234D9C /* Employee.swift */; };
+		1EEBC4E92295AEE300234D9C /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEBC4E82295AEE300234D9C /* MemberTableViewCell.swift */; };
+		1EEBC4EB2295AF0000234D9C /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEBC4EA2295AF0000234D9C /* MemberViewController.swift */; };
+		1EEBC4ED2295AF0F00234D9C /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEBC4EC2295AF0F00234D9C /* Member.swift */; };
+		1EEBC4EF2295AFA000234D9C /* MembershipLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEBC4EE2295AFA000234D9C /* MembershipLevel.swift */; };
+		1EEBC4F12295B80E00234D9C /* Membership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEBC4F02295B80E00234D9C /* Membership.swift */; };
+		1EEBC4F42295E50400234D9C /* AddMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEBC4F32295E50400234D9C /* AddMemberViewController.swift */; };
+		1EEBC4F722964F9300234D9C /* AddEmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEBC4F622964F9300234D9C /* AddEmployeeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +32,16 @@
 		1EEBC4D4229573A800234D9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EEBC4D7229573A800234D9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1EEBC4D9229573A800234D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EEBC4E1229577D200234D9C /* EmployeesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesViewController.swift; sourceTree = "<group>"; };
+		1EEBC4E32295785A00234D9C /* EmployeeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTableViewCell.swift; sourceTree = "<group>"; };
+		1EEBC4E622957F6700234D9C /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
+		1EEBC4E82295AEE300234D9C /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
+		1EEBC4EA2295AF0000234D9C /* MemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
+		1EEBC4EC2295AF0F00234D9C /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		1EEBC4EE2295AFA000234D9C /* MembershipLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipLevel.swift; sourceTree = "<group>"; };
+		1EEBC4F02295B80E00234D9C /* Membership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Membership.swift; sourceTree = "<group>"; };
+		1EEBC4F32295E50400234D9C /* AddMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberViewController.swift; sourceTree = "<group>"; };
+		1EEBC4F622964F9300234D9C /* AddEmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmployeeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +74,9 @@
 		1EEBC4CC229573A700234D9C /* TheGym */ = {
 			isa = PBXGroup;
 			children = (
+				1EEBC4E522957F5500234D9C /* Model */,
+				1EEBC4E0229577A100234D9C /* Members */,
+				1EEBC4DF2295779000234D9C /* Employees */,
 				1EEBC4CD229573A700234D9C /* AppDelegate.swift */,
 				1EEBC4CF229573A700234D9C /* ViewController.swift */,
 				1EEBC4D1229573A700234D9C /* Main.storyboard */,
@@ -62,6 +85,53 @@
 				1EEBC4D9229573A800234D9C /* Info.plist */,
 			);
 			path = TheGym;
+			sourceTree = "<group>";
+		};
+		1EEBC4DF2295779000234D9C /* Employees */ = {
+			isa = PBXGroup;
+			children = (
+				1EEBC4F522964F7100234D9C /* Add_Employee */,
+				1EEBC4E1229577D200234D9C /* EmployeesViewController.swift */,
+				1EEBC4E32295785A00234D9C /* EmployeeTableViewCell.swift */,
+			);
+			path = Employees;
+			sourceTree = "<group>";
+		};
+		1EEBC4E0229577A100234D9C /* Members */ = {
+			isa = PBXGroup;
+			children = (
+				1EEBC4F22295E4DF00234D9C /* Add_Member */,
+				1EEBC4EA2295AF0000234D9C /* MemberViewController.swift */,
+				1EEBC4E82295AEE300234D9C /* MemberTableViewCell.swift */,
+			);
+			path = Members;
+			sourceTree = "<group>";
+		};
+		1EEBC4E522957F5500234D9C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1EEBC4E622957F6700234D9C /* Employee.swift */,
+				1EEBC4EC2295AF0F00234D9C /* Member.swift */,
+				1EEBC4EE2295AFA000234D9C /* MembershipLevel.swift */,
+				1EEBC4F02295B80E00234D9C /* Membership.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1EEBC4F22295E4DF00234D9C /* Add_Member */ = {
+			isa = PBXGroup;
+			children = (
+				1EEBC4F32295E50400234D9C /* AddMemberViewController.swift */,
+			);
+			path = Add_Member;
+			sourceTree = "<group>";
+		};
+		1EEBC4F522964F7100234D9C /* Add_Employee */ = {
+			isa = PBXGroup;
+			children = (
+				1EEBC4F622964F9300234D9C /* AddEmployeeViewController.swift */,
+			);
+			path = Add_Employee;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +206,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EEBC4D0229573A700234D9C /* ViewController.swift in Sources */,
+				1EEBC4EB2295AF0000234D9C /* MemberViewController.swift in Sources */,
+				1EEBC4E92295AEE300234D9C /* MemberTableViewCell.swift in Sources */,
+				1EEBC4F12295B80E00234D9C /* Membership.swift in Sources */,
+				1EEBC4E42295785A00234D9C /* EmployeeTableViewCell.swift in Sources */,
 				1EEBC4CE229573A700234D9C /* AppDelegate.swift in Sources */,
+				1EEBC4F722964F9300234D9C /* AddEmployeeViewController.swift in Sources */,
+				1EEBC4E722957F6700234D9C /* Employee.swift in Sources */,
+				1EEBC4EF2295AFA000234D9C /* MembershipLevel.swift in Sources */,
+				1EEBC4F42295E50400234D9C /* AddMemberViewController.swift in Sources */,
+				1EEBC4E2229577D200234D9C /* EmployeesViewController.swift in Sources */,
+				1EEBC4ED2295AF0F00234D9C /* Member.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
