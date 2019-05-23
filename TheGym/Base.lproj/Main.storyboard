@@ -109,7 +109,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9EU-0U-5Ib">
-                                <rect key="frame" x="0.0" y="88" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="599"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -219,16 +219,17 @@
                                             <outlet property="mailLabel" destination="KNg-e5-oFV" id="Cab-mg-BZj"/>
                                             <outlet property="phoneNumberLabel" destination="eFF-Jr-8Li" id="4w4-Zf-weG"/>
                                             <outlet property="userNameLabel" destination="tol-0b-M3r" id="DNf-fp-1la"/>
+                                            <segue destination="bjq-Rj-J3W" kind="presentation" identifier="changeEmployeeInfo" modalTransitionStyle="crossDissolve" id="gAd-Qs-GU8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezO-4a-fr5">
-                                <rect key="frame" x="112" y="727" width="151" height="35"/>
+                                <rect key="frame" x="112" y="715" width="151" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add new employee"/>
                                 <connections>
-                                    <segue destination="bjq-Rj-J3W" kind="presentation" modalTransitionStyle="crossDissolve" id="osJ-oi-Y9L"/>
+                                    <segue destination="bjq-Rj-J3W" kind="presentation" identifier="addEmployeeSegue" modalTransitionStyle="crossDissolve" id="osJ-oi-Y9L"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -365,6 +366,7 @@
                                             <outlet property="mailLabel" destination="pIt-Ve-jIO" id="7ab-k8-2o8"/>
                                             <outlet property="phoneNumberLabel" destination="ycL-tM-wa1" id="pmq-yR-Z5H"/>
                                             <outlet property="userNameLabel" destination="fZq-dA-sRA" id="S7e-xI-Eh5"/>
+                                            <segue destination="Pzv-qA-EX6" kind="presentation" identifier="changeMemberInfo" modalTransitionStyle="crossDissolve" id="OO9-qA-ihm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -374,7 +376,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add new member"/>
                                 <connections>
-                                    <segue destination="Pzv-qA-EX6" kind="presentation" modalTransitionStyle="crossDissolve" id="izZ-jx-ZFK"/>
+                                    <segue destination="Pzv-qA-EX6" kind="presentation" identifier="addMemberSegue" modalTransitionStyle="crossDissolve" id="izZ-jx-ZFK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -397,13 +399,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add new member" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUE-xZ-Ugq">
-                                <rect key="frame" x="39" y="70" width="297" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V42-Bn-aSl">
                                 <rect key="frame" x="122" y="558" width="131" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -461,17 +456,48 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RfW-YP-hmj">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="HD8-vJ-ddq">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="5s0-JU-3en">
+                                            <connections>
+                                                <action selector="cancelItemButton:" destination="Pzv-qA-EX6" id="gcj-a9-Wc9"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Delete" id="4QZ-80-Nov">
+                                            <connections>
+                                                <action selector="deleteItemButton:" destination="Pzv-qA-EX6" id="m6R-XP-dNm"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOZ-hp-gbo">
+                                <rect key="frame" x="122" y="648" width="131" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Put"/>
+                                <connections>
+                                    <action selector="putEmployeButton:" destination="bjq-Rj-J3W" eventType="touchUpInside" id="hYr-3z-xio"/>
+                                    <action selector="putMemberButton:" destination="Pzv-qA-EX6" eventType="touchUpInside" id="7yh-fp-dl9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="0pi-R8-eZe"/>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="V42-Bn-aSl" id="HWQ-Yy-e70"/>
                         <outlet property="adressTextField" destination="BqO-cP-4EC" id="sh0-jD-fUc"/>
+                        <outlet property="deleteItemButton" destination="4QZ-80-Nov" id="cRR-pM-ri5"/>
                         <outlet property="firstNameTextField" destination="ff5-cb-Iua" id="Pf6-vZ-63S"/>
                         <outlet property="idTextField" destination="IrI-Xb-Ix7" id="2uC-y5-dwa"/>
                         <outlet property="lasNameTextField" destination="952-Gg-Igs" id="U9d-W2-sjo"/>
                         <outlet property="mailTextField" destination="DPp-8F-Gnh" id="MPY-Pk-hRI"/>
+                        <outlet property="navigationBar" destination="RfW-YP-hmj" id="IQd-3r-wKb"/>
                         <outlet property="phonenumberTextField" destination="TaV-y9-b2e" id="3FR-87-jnv"/>
+                        <outlet property="putButton" destination="JOZ-hp-gbo" id="eB7-ab-G7l"/>
                         <outlet property="userNameTextField" destination="ANM-H6-au5" id="Top-Rf-GZp"/>
                     </connections>
                 </viewController>
@@ -479,27 +505,20 @@
             </objects>
             <point key="canvasLocation" x="3088.8000000000002" y="393.8423645320197"/>
         </scene>
-        <!--Add Employee View Controller-->
+        <!--Add Or Change An Employee View Controller-->
         <scene sceneID="7zA-FE-Csj">
             <objects>
-                <viewController id="bjq-Rj-J3W" customClass="AddEmployeeViewController" customModule="TheGym" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bjq-Rj-J3W" customClass="AddOrChangeAnEmployeeViewController" customModule="TheGym" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XXn-3K-KKJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add new employee" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVz-aa-f0T">
-                                <rect key="frame" x="39" y="95" width="297" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsI-Ak-qAU">
-                                <rect key="frame" x="122" y="583" width="131" height="37"/>
+                                <rect key="frame" x="122" y="543" width="131" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
-                                    <action selector="addMemberButton:" destination="bjq-Rj-J3W" eventType="touchUpInside" id="O4x-CE-h7o"/>
+                                    <action selector="addEmployeeButton:" destination="bjq-Rj-J3W" eventType="touchUpInside" id="O4x-CE-h7o"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Adress" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BTM-9p-gsF">
@@ -551,23 +570,53 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBn-NL-uwj">
+                                <rect key="frame" x="122" y="616" width="131" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Put"/>
+                                <connections>
+                                    <action selector="putEmployeButton:" destination="bjq-Rj-J3W" eventType="touchUpInside" id="5Dc-iX-Yth"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fkQ-td-YN4">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="0cD-ew-4eO">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="N8Y-GF-yNs">
+                                            <connections>
+                                                <action selector="cancelItemButton:" destination="bjq-Rj-J3W" id="tzr-JJ-2WZ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Delete" id="IMU-a3-kAg">
+                                            <connections>
+                                                <action selector="deleteItemButton:" destination="bjq-Rj-J3W" id="1du-RT-HK3"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="hn5-or-eaB"/>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="MsI-Ak-qAU" id="1wW-Gn-Gct"/>
                         <outlet property="adressTextField" destination="BTM-9p-gsF" id="sxc-Zb-qzz"/>
+                        <outlet property="deleteItemButton" destination="IMU-a3-kAg" id="N1h-R0-p6o"/>
                         <outlet property="firstNameTextField" destination="mCw-OT-Ii3" id="Vmf-h7-dXy"/>
                         <outlet property="idTextField" destination="rQY-O6-cSv" id="Jaq-Xi-08L"/>
                         <outlet property="lasNameTextField" destination="0an-p6-4ui" id="fia-6m-rzA"/>
                         <outlet property="mailTextField" destination="2W1-z4-BJ5" id="Y8l-0N-uUX"/>
+                        <outlet property="navigationBar" destination="fkQ-td-YN4" id="ojO-9D-jSv"/>
                         <outlet property="phonenumberTextField" destination="lIO-PZ-8Cg" id="t1L-Gu-94a"/>
+                        <outlet property="putButton" destination="cBn-NL-uwj" id="dHl-Jc-zIC"/>
                         <outlet property="userNameTextField" destination="kKd-eD-zaL" id="pzw-za-Hub"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3C-By-bcu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3089" y="1094"/>
+            <point key="canvasLocation" x="3088.8000000000002" y="1093.5960591133005"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AIw-bL-msM">
@@ -588,4 +637,8 @@
             <point key="canvasLocation" x="285.50724637681162" y="782.8125"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="gAd-Qs-GU8"/>
+        <segue reference="OO9-qA-ihm"/>
+    </inferredMetricsTieBreakers>
 </document>

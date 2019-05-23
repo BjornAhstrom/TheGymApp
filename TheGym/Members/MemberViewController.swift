@@ -12,6 +12,7 @@ class MemberViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var memberTableView: UITableView!
     
     private var members = [Membership]()
+    var member: Member?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,9 +68,7 @@ class MemberViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("!!!!!!!!!!!!!!!!!!! \(members.count)")
         return members.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,9 +81,37 @@ class MemberViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell?.adressLabel.text = "\(mem.member.adress ?? "adress")"
         cell?.phoneNumberLabel.text = "\(mem.member.phoneNumber ?? "phoneNumber")"
         cell?.mailLabel.text = "\(mem.member.mail ?? "mail")"
-        cell?.idLabel.text = "Id \(mem.member.id ?? "id")"
-        
+        cell?.idLabel.text = "\(mem.member.id ?? "id")"
         
         return cell ?? cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        guard let employeeCell = tableView.cellForRow(at: indexPath) as? MemberTableViewCell else { return }
+        
+        let parameters = ["userName" : employeeCell.userNameLabel.text, "firstName" : employeeCell.firstNameLabel.text, "lastName" : employeeCell.lastNameLabel.text, "adress" : employeeCell.adressLabel.text, "phoneNumber" : employeeCell.phoneNumberLabel.text, "mail" : employeeCell.mailLabel.text, "id" : employeeCell.idLabel.text]
+        
+        member = Member(json: parameters as [String : Any])
+        
+        performSegue(withIdentifier: "changeMemberInfo", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        DispatchQueue.main.async {
+            if segue.identifier == "changeMemberInfo" {
+                if let destination = segue.destination as? AddMemberViewController {
+                    destination.changeMemberInfo = true
+                    destination.member = self.member
+                }
+            }
+        }
+        
+        if segue.identifier == "addMemberSegue" {
+            if let destination = segue.destination as? AddMemberViewController {
+                destination.addMember = true
+            }
+        }
     }
 }

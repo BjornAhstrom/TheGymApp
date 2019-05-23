@@ -10,14 +10,15 @@ import UIKit
 
 class EmployeesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var employeesTableView: UITableView!
+    @IBOutlet weak var changeEmployeeInfoButton: UIButton!
     
     private var employees = [Employee]()
+    var employee: Employee?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.employeesTableView.delegate = self
         self.employeesTableView.dataSource = self
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +40,6 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
                     for employees in json {
                         
                         let emp = Employee(json: employees)
-                        print("!!!!!!!! \(emp.firstName ?? "")")
                         
                         self.employees.append(emp)
                         
@@ -49,11 +49,10 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
                     }
                     
                 } catch {
-                    print("Something went wrong, message: \(error.localizedDescription )")
+                    print(error.localizedDescription)
                 }
             }
-        }.resume()
-        
+            }.resume()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -62,7 +61,6 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return employees.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,8 +73,37 @@ class EmployeesViewController: UIViewController, UITableViewDelegate, UITableVie
         cell?.adressLabel.text = "\(emp.adress ?? "")"
         cell?.phoneNumberLabel.text = "\(emp.phoneNumber ?? "")"
         cell?.mailLabel.text = "\(emp.mail ?? "")"
-        cell?.idLabel.text = "Id \(emp.id ?? "")"
+        cell?.idLabel.text = "\(emp.id ?? "")"
         
         return cell ?? cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        guard let employeeCell = tableView.cellForRow(at: indexPath) as? EmployeeTableViewCell else { return }
+        
+        let parameters = ["userName" : employeeCell.userNameLabel.text, "firstName" : employeeCell.firstNameLabel.text, "lastName" : employeeCell.lastNameLabel.text, "adress" : employeeCell.adressLabel.text, "phoneNumber" : employeeCell.phoneNumberLabel.text, "mail" : employeeCell.mailLabel.text, "id" : employeeCell.idLabel.text]
+        
+        employee = Employee(json: parameters as [String : Any])
+        
+        performSegue(withIdentifier: "changeEmployeeInfo", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        DispatchQueue.main.async {
+            if segue.identifier == "changeEmployeeInfo" {
+                if let destination = segue.destination as? AddOrChangeAnEmployeeViewController {
+                    destination.changeEmployeeInfo = true
+                    destination.employee = self.employee
+                }
+            }
+        }
+        
+        if segue.identifier == "addEmployeeSegue" {
+            if let destination = segue.destination as? AddOrChangeAnEmployeeViewController {
+                destination.addEmployee = true
+            }
+        }
     }
 }
